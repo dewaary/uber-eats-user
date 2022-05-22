@@ -1,6 +1,8 @@
 // Styling and Icon
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Pressable} from 'react-native';
 import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+
 import IconPlus from 'react-native-vector-icons/Octicons';
 IconPlus.loadFont();
 import IconMinus from 'react-native-vector-icons/Feather';
@@ -11,6 +13,7 @@ const dish = restaurants[0].dishes[0];
 
 const DishDetailScreen = () => {
   const [quantity, setQuantity] = useState(1);
+  const navigation = useNavigation();
 
   const onMinus = () => {
     if (quantity > 1) {
@@ -49,11 +52,13 @@ const DishDetailScreen = () => {
           onPress={onPlus}
         />
       </View>
-      <View style={styles.button}>
+      <Pressable
+        onPress={() => navigation.navigate('Basket')}
+        style={styles.button}>
         <Text style={styles.buttonText}>
           Add {quantity} to basket &#8226; ${getTotal()}
         </Text>
-      </View>
+      </Pressable>
     </View>
   );
 };
