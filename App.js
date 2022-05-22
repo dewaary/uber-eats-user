@@ -8,37 +8,15 @@
 
 import React from 'react';
 
-import {StatusBar, StyleSheet, View} from 'react-native';
-import DishListItem from './src/components/DishListItem';
-import Basket from './src/screens/Basket';
-import DishDetailScreen from './src/screens/DishDetailScreen';
-import HomeScreen from './src/screens/HomeScreen';
-import OrderDetails from './src/screens/OrderDetails';
-import OrderScreen from './src/screens/OrderScreen';
-import RestaurantDetailScreen from './src/screens/RestaurantDetails';
+import {StatusBar} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import RootNavigator from './src/navigation';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* <HomeScreen /> */}
-      {/* <RestaurantDetailScreen /> */}
-      {/* <DishListItem /> */}
-      {/* <DishDetailScreen /> */}
-      {/* <Basket /> */}
-      {/* <OrderScreen /> */}
-      <OrderDetails />
+    <NavigationContainer>
+      <RootNavigator />
       <StatusBar style="light" />
-    </View>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    // padding: 10,
-    // marginVertical: 30,
-  },
-});
