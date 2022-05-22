@@ -1,6 +1,8 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import restaurants from '../../../assets/data/restaurants.json';
+import DishListItem from '../../components/DishListItem';
+import Header from './Header';
 // import { Icon } from 'react-native-vector-icons/FontAwesome';
 
 const restaurant = restaurants[0];
@@ -8,22 +10,11 @@ const restaurant = restaurants[0];
 const RestaurantDetailScreen = () => {
   return (
     <View style={styles.page}>
-      <Image source={{uri: restaurant.image}} style={styles.image} />
-
-      {/* <Icon 
-            name="arrow-back-circle"
-            size={45}
-            color="white"
-            style={styles.iconContainer}
-        /> */}
-
-      <View style={styles.container}>
-        <Text style={styles.title}>{restaurant.name}</Text>
-        <Text style={styles.subtitle}>
-          $ {restaurant.deliveryFee} {restaurant.minDeliveryTime} -{' '}
-          {restaurant.maxDeliveryTime} minutes
-        </Text>
-      </View>
+      <FlatList
+        ListHeaderComponent={() => <Header restaurant={restaurant} />}
+        data={restaurant.dishes}
+        renderItem={({item}) => <DishListItem dish={item} />}
+      />
     </View>
   );
 };

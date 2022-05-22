@@ -9,6 +9,7 @@
 import React from 'react';
 
 import {StatusBar, StyleSheet, View} from 'react-native';
+import DishListItem from './src/components/DishListItem';
 import HomeScreen from './src/screens/HomeScreen';
 import RestaurantDetailScreen from './src/screens/RestaurantDetails';
 
@@ -17,6 +18,7 @@ export default function App() {
     <View style={styles.container}>
       {/* <HomeScreen /> */}
       <RestaurantDetailScreen />
+      {/* <DishListItem /> */}
       <StatusBar style="light" />
     </View>
   );
